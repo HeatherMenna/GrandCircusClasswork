@@ -1,0 +1,59 @@
+package Lab6;
+
+import java.util.Scanner;
+
+public class Factorial {
+
+	// scanner
+	Scanner scan1 = new Scanner(System.in);
+
+	// creates new method called FactorialCalc
+	public static void FactorialCalc() {
+
+		// scanner
+		Scanner scan1 = new Scanner(System.in);
+
+		// asks user for input
+		System.out.println("Enter a number that's between 1 and 10: ");
+		int input = scan1.nextInt();
+
+		// if statement to determine if user input valid value
+		if (input <= 0 || input > 10) {
+			System.out.println("Out of bounds.");
+		} else {
+			// define variable "solution" as data type long
+			long solution = 1;
+
+			// for loop to calculate the factorial
+			for (int i = 1; i <= input; i++) {
+				solution = (solution * (i));
+			}
+			System.out.println(solution);
+		}
+	}
+
+	public static void main(String[] args) {
+		// scanner
+		Scanner scan1 = new Scanner(System.in);
+
+		// welcome message
+		System.out.println("Welcome to the Factorial Calculator!");
+
+		// asks user if they want to play
+		System.out.println("Would you like to enter a number? (y/n): ");
+		String ans = scan1.next();
+
+		// while loop to continue until user enters anything other than y or yes
+		while (ans.equalsIgnoreCase("y") || ans.equalsIgnoreCase("yes")) {
+
+			FactorialCalc();
+
+			// asks user if they want to play again
+			System.out.println("Would you like to enter another number? (y/n): ");
+			ans = scan1.next();
+		}
+		// close the scanner
+		scan1.close();
+	}
+
+}

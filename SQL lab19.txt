@@ -1,0 +1,73 @@
+1. select * from customers;
+
+2. select distinct country from customers;
+
+3. SELECT * FROM Customers
+Where CustomerName like 'Bl%';
+
+4. SELECT *
+FROM orders
+LIMIT 100;
+
+5. select * from customers
+where PostalCode in (1010, 3012, 12209, 05023);
+
+6. select * from orders
+where ShipRegion is not null;
+
+7. SELECT * FROM Customers
+ORDER BY Country, city desc;
+
+8. insert into customers values ('92', 
+'abc123', 'sam smith', 'manager', '1234 main', 'detroit', ' ', 
+'48226', 'united states', '555-555-5555', ' ');
+
+9. update orders
+set ShipRegion = 'EuroZone'
+where ShipCountry = 'France';
+
+10. DELETE FROM OrderDetails
+WHERE quantity='1';
+
+11. select max(Quantity), min(Quantity), avg(Quantity)
+from `order details`;
+
+12. select max(Quantity), min(Quantity), avg(Quantity)
+from `order details`
+group by orderid;
+
+13. select customerid from orders
+where orderid = 10290; 
+
+14a)SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+INNER JOIN Orders
+ON Customers.CustomerID=Orders.CustomerID;
+
+14b)SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+LEFT JOIN Orders
+ON Customers.CustomerID=Orders.CustomerID;
+
+14c)SELECT Orders.OrderID, Employees.FirstName
+FROM Orders
+RIGHT JOIN Employees
+ON Orders.EmployeeID=Employees.EmployeeID;
+
+15. select firstname from employees
+where ReportsTo is null;
+
+16. select firstname from employees
+
+where ReportsTo= 
+
+(select EmployeeID from employees
+
+where firstname = 'Andrew');
+
+17. select count(*) from `order details`
+
+where Quantity=
+
+(select min(Quantity)
+from `order details`);

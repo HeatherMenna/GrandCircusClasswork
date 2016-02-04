@@ -1,0 +1,71 @@
+package Nov24;
+
+import java.util.*;
+//import java.util.Arrays;
+
+public class Lab8a {
+
+	public static void main(String[] args) {
+		Scanner scan1 = new Scanner(System.in);
+		String again = "yes";
+
+		// define & assign values to each array (Names, homeTown, faveFood)
+		String[] Names = { "John", "Joe", "Pavel", "Rachel", "Heather", "Henrik", "Justin", "Rose", "L'Tanya", "Erik",
+				"Megan", "Frank", "Chauncey", "Robin", "Pam", "Sue", "Jessica", "Ryan", "Jason", "Michael" };
+		String[] hometown = { "Detroit, MI", "Southgate, MI", "Ferndale, MI", "Lincoln Park, MI", "Oak Park, MI",
+				"Dearborn, MI", "Detroit, MI", "Highland Park, MI", "Chicago, IL", "Hale, MI", "Birmingham, MI",
+				"Royal Oak, MI", "Pontiac, MI", "Allen Park, MI", "Dearborn Heights, MI", "Pittsburg, PA",
+				"Atlanta, GA", "Denver, CO", "Paris, France", "London, England" };
+		String[] faveFood = { "pizza", "venison", "pasta", "gyros", "hamburgers", "roast", "salad", "cheese", "tacos",
+				"lettuce", "strawberries", "chicken", "steak", "soup", "seafood", "french fries", "dessert", "fajitas",
+				"ice cream", "grapes" };
+
+		System.out.println("Welcome to our Java class.");
+
+		do {
+			System.out.println("Which student would you like to know more about? (enter a number between 1 - 20): ");
+			int nameNum = scan1.nextInt(); // assigns user input as nameNum
+			int studentNum = nameNum; // assigns variable to gather the user
+										// input for output
+			nameNum = nameNum - 1; // subtract 1 because arrays start at 0
+			// asks user for valid input (user has already entered invalid data)
+			if (nameNum < 0 || nameNum > 20) {
+				System.out.println("That student does not exist. Please try again.");
+				System.out.println("Enter a number between 1 - 20: ");
+				nameNum = scan1.nextInt();
+				studentNum = nameNum;
+				nameNum = nameNum - 1;
+			}
+			// if user inputs a valid request, we use the if statement below
+			if (nameNum >= 0 && nameNum <= 20) {
+				System.out.println(
+						"Student " + studentNum + " is " + Names[nameNum] + ". What would you like to know about "
+								+ Names[nameNum] + "? (enter \"hometown\" or \"faveFood\") : ");
+				String choice = scan1.next();
+				
+				// Tells user data doesn't exist, asks for valid data
+				if (!choice.equalsIgnoreCase("hometown") && !choice.equalsIgnoreCase("faveFood")) {
+					System.out.println("That data does not exist. Please try again.");
+					System.out.println("Enter \"hometown\" or \"faveFood\": ");
+					choice = scan1.next();
+				}
+				// prints out the favorite food for the selected student
+				if (choice.equalsIgnoreCase("faveFood")) {
+					System.out.println(Names[nameNum] + "'s favorite food is " + faveFood[nameNum] + ".");
+				}
+				// prints out where the person being searched for is from
+				if(choice.equalsIgnoreCase("hometown")) {
+					System.out.println(Names[nameNum] + " is from " + hometown[nameNum] + ".");
+				}
+				
+			}
+
+			// allows user to decide to run again
+			System.out.println("Would you like to know more? (enter \"yes\" or \"no\"): ");
+			again = scan1.next();
+
+			// loop will run as long as user enters yes & ignores case
+		} while (again.equalsIgnoreCase("yes"));
+		scan1.close(); // closes the scanner
+	}
+}

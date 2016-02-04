@@ -1,0 +1,65 @@
+package Lab5;
+
+import java.util.*;
+
+public class DiceRoll {
+
+	// creates method called roll, that returns a random integer between 1 & 6
+	public static int roll() {
+		Random rand = new Random();
+		int sides = rand.nextInt(6) + 1;
+		return sides;
+
+	}
+
+	public static void main(String[] args) {
+
+		// scanner
+		Scanner scan1 = new Scanner(System.in);
+
+		// define variables
+		int dice;
+		int dice2;
+		int dice3;
+		int dice4;
+		int yourTotal;
+		int computerTotal;
+
+		// welcome message
+		System.out.println("Welcome to the Grand Circus Casino!");
+		// asks user if they want to roll the dice & assigns variable ans
+		System.out.println("Would you like to roll the dice? (y/n): ");
+		String ans = scan1.next();
+
+		// loops until user inputs n
+		while (ans.equalsIgnoreCase("y")) {
+			dice = roll();
+			dice2 = roll();
+			dice3 = roll();
+			dice4 = roll();
+			yourTotal = (dice + dice2);
+			computerTotal = (dice3 + dice4);
+
+			// prints out user dice & total
+			System.out.println(dice + " , " + dice2 + "\n" + "Your total for the roll: " + yourTotal);
+
+			// prints out computer dice & total
+			System.out.println(dice3 + " , " + dice4 + "\n" + "Computer total for the roll: " + computerTotal);
+
+			// compares user total and computer total and displays message based
+			// on totals
+			if (yourTotal > computerTotal)
+				System.out.println("Congratulations! You beat the computer." + "\n");
+			else if (yourTotal == computerTotal)
+				System.out.println("You tied!" + "\n");
+			else
+				System.out.println("Sorry, you lose!" + "\n");
+
+			// asks user if they want to play again
+			System.out.println("Would you like to roll the dice? (y/n): ");
+			ans = scan1.next();
+		}
+		// closes the scanner
+		scan1.close();
+	}
+}
